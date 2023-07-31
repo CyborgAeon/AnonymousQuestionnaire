@@ -8,10 +8,14 @@ app.use(bodyParser.json());
 // Configuration for the database connection
 const dbConfig = {
   port: 1433,
-  user: "NCLAN\\BRBAR",
-  password: "banana",
-  server: "localhost",
+  user: "NCDMZ\\BRBAR",
+  password: "N0tc0mpany.sEcYur!ty",
+  server: "localhost\\PF3ZSP4K",
   database: "Questionnaire",
+  options: {
+    encrypt: true,
+    trustServerCertificate: true,
+  },
 };
 
 // Endpoint for getting all surveys
@@ -34,6 +38,7 @@ app.post("/surveys", async (req, res) => {
   }
 
   try {
+    console.log(dbConfig);
     const pool = await sql.connect(dbConfig);
     const result = await pool
       .request()
@@ -57,5 +62,5 @@ app.post("/surveys", async (req, res) => {
 
 // Start the server
 app.listen(dbConfig, () => {
-  console.log(`Server running on http://${dbConfig.server}:${3000}`);
+  console.log(`Server running on http://localhost:${3000}`);
 });
