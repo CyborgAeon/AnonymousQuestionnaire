@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 const dbConfig = {
   port: 1433,
   user: "NCDMZ\\BRBAR",
-  password: "N0tc0mpany.sEcYur!ty",
+  password: "--",
   server: "localhost\\PF3ZSP4K",
   database: "Questionnaire",
   options: {
@@ -38,7 +38,6 @@ app.post("/surveys", async (req, res) => {
   }
 
   try {
-    console.log(dbConfig);
     const pool = await sql.connect(dbConfig);
     const result = await pool
       .request()
@@ -61,6 +60,4 @@ app.post("/surveys", async (req, res) => {
 // Add other endpoints for updating and deleting surveys as needed.
 
 // Start the server
-app.listen(dbConfig, () => {
-  console.log(`Server running on http://localhost:${3000}`);
-});
+app.listen(() => {});
